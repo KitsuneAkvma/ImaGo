@@ -234,4 +234,56 @@ input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-se
 input[type=checkbox], input[type=radio] {
   box-sizing: border-box;
   padding: 0;
+}
+
+.home {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgb(242, 247, 245);
+  background: linear-gradient(0deg, rgb(242, 247, 245) 0%, rgb(255, 168, 186) 100%);
+}
+.home__title {
+  color: #00473e;
+}
+.home__subtitle {
+  color: #475d5b;
+}
+
+.search {
+  width: 60vw;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f2f7f5;
+  background-color: #00473e;
+  border-radius: 15px;
+}
+.search__form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.search__form__input {
+  width: 80%;
+  height: 3em;
+  text-align: center;
+  background-color: #f2f7f5;
+  border: none;
+}
+.search__form__button {
+  width: 20%;
+  height: 2.5em;
+  color: #00473e;
+  background-color: #faae2c;
+  border: none;
+  border-radius: 8px;
 }/*# sourceMappingURL=index.css.map */

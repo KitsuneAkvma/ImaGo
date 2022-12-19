@@ -1,0 +1,70 @@
+//------------------//
+//-------MAIN-------//
+//-------PAGE-------//
+//------------------//
+
+.home {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: rgb(242, 247, 245);
+  background: linear-gradient(
+    0deg,
+    rgba(242, 247, 245, 1) 0%,
+    rgba(255, 168, 186, 1) 100%
+  );
+  &__title {
+    color: #00473e;
+  }
+  &__subtitle {
+    color: #475d5b;
+  }
+}
+
+.search {
+  width: 60vw;
+  height: 50vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #f2f7f5;
+
+  background-color: #00473e;
+  border-radius: 15px;
+
+  &__form {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+  }
+  &__form__input {
+    width: 80%;
+    height: 3em;
+
+    text-align: center;
+    background-color: #f2f7f5;
+    border: none;
+  }
+  &__form__button {
+    width: 20%;
+    height: 2.5em;
+
+    color: #00473e;
+
+    background-color: #faae2c;
+    border: none;
+    border-radius: 8px;
+  }
+}
