@@ -30,7 +30,6 @@ template {
 }
 
 html {
-  background: #fff;
   color: #000;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -239,28 +238,29 @@ input[type=checkbox], input[type=radio] {
 .home {
   width: 100vw;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 5fr;
   align-items: center;
-  justify-content: center;
-  background: rgb(242, 247, 245);
-  background: linear-gradient(0deg, rgb(242, 247, 245) 0%, rgb(255, 168, 186) 100%);
+  background-color: #fffffe;
 }
 .home__title {
+  grid-column-start: 1;
   color: #00473e;
 }
 .home__subtitle {
+  grid-column-start: 2;
+  grid-row-start: 1;
   color: #475d5b;
 }
 
 .search {
-  width: 60vw;
-  height: 50vh;
+  grid-row-start: 2;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #f2f7f5;
-  background-color: #00473e;
+  background-color: #fffffe;
   border-radius: 15px;
 }
 .search__form {
@@ -286,4 +286,25 @@ input[type=checkbox], input[type=radio] {
   background-color: #faae2c;
   border: none;
   border-radius: 8px;
+}
+
+.svg--mainpage {
+  width: 33rem;
+  height: 23rem;
+}
+
+.search-wrapper {
+  display: flex;
+}
+
+.search-bar {
+  width: 100vw;
+  height: 10vh;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: #3da9fc;
+}
+
+.search-content {
+  background-color: #fffffe;
 }/*# sourceMappingURL=index.css.map */

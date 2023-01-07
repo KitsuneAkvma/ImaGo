@@ -4,31 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/src/sass/index.min.css" />
+    <link rel="stylesheet" href="sass/index.scss" />
     <title>ImaGo</title>
   </head>
   <body>
-    <div class="home">
-      <h1 class="home__title">ImaGO</h1>
-      <h2 class="home__subtitle">Light axios-based image search engine</h2>
-      <div class="search">
-        <h3 class="search__info"></h3>
-        <form class="search__form">
-          <input
-            type="search"
-            name="main-search-images"
-            placeholder="Type what are you looking for (eg. 'crazy cat')"
-            class="search__form__input"
-          /><button
-            type="submit"
-            name="main-submit"
-            class="search__form__button"
-          >
-            search
-          </button>
-        </form>
-      </div>
-    </div>
-    <script src="index.js"></script>
+    <section class="search-wrapper">
+      <section class="search-bar"></section>
+      <section class="main-content"></section>
+    </section>
   </body>
 </html>
