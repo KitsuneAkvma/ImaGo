@@ -27,7 +27,7 @@ async function fetchMain() {
   // Search for images by keyword. Show 40 images per page and show specified page ( logic done bellow)
   await axios
     .get(
-      `${API_URL}${API_KEY}&q=${searchedKey}&per_page=40&page=${currentPage}`
+      `${API_URL}${API_KEY}&q=${searchedKey}&per_page=40&page=${currentPage}&image_type=photo&orientation=horizontal&safesearch=true`
     )
     .then(response => {
       // Save array of images objecs as variable
@@ -74,11 +74,13 @@ async function fetchMain() {
 
 function displayResults(image) {
   // HTML structure of result
+  // used loading='Lazy' and used large image as previev to achive better UX
   const resultNode = `<img
-      src="${image.previewURL}"
+      src="${image.webformatURL}"
       alt="${image.tags}"
       class="image-result__preview"
       href="${image.largeImageURL}"
+      loading="lazy"
     />
     <ul class="image-result__stats">
       <li class="image-result__stats__item">

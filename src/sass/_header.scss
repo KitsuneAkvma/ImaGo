@@ -22,6 +22,13 @@
   text-align: center;
   font-size: 1.5em;
   color: $header;
+
+  border-radius: 10px;
+  border: none;
+  &:focus {
+    border: 2px solid $Tertiary;
+    box-shadow: none;
+  }
 }
 .main-content {
   background-color: $background;
@@ -42,4 +49,6 @@
   font-size: 4em;
   font-style: italic;
   letter-spacing: 0.2em;
+
+  user-select: none;
 }

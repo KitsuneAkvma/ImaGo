@@ -111,6 +111,7 @@ input,
 select,
 textarea {
   font-family: $normalized_font_family;
+  scroll-behavior: smooth;
 }
 
 // Addresses margins handled incorrectly in IE6/7
