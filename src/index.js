@@ -37,6 +37,7 @@ async function fetchMain() {
       if (response.statusText == 'OK') {
         // If promise is fuffiled but notthing has been found
         if (response.data.totalHits == 0) {
+          loadMoreBtn.style.display = 'none';
           Notiflix.Notify.failure(
             'Sorry, there are no images matching your search query. Please try again.'
           );
