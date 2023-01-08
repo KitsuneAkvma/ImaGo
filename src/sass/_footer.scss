@@ -1,0 +1,24 @@
+.pages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem;
+
+  font-size: 2rem;
+
+  &__item {
+    width: 2.2rem;
+
+    text-align: center;
+
+    transition: transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    cursor: pointer;
+    user-select: none;
+    &:hover {
+      transform: scale(1.7);
+      color: $secondary;
+    }
+  }
+}

@@ -47,6 +47,11 @@ body {
   margin: 0;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 a {
   background: transparent;
 }
@@ -293,11 +298,10 @@ input[type=checkbox], input[type=radio] {
   height: 23rem;
 }
 
-.search-wrapper {
+.search-header {
   display: flex;
-}
-
-.search-bar {
+  align-items: center;
+  justify-content: center;
   width: 100vw;
   height: 10vh;
   border-bottom-left-radius: 20px;
@@ -305,6 +309,90 @@ input[type=checkbox], input[type=radio] {
   background-color: #3da9fc;
 }
 
-.search-content {
+.search-bar {
+  position: relative;
+  width: 30%;
+  height: 60%;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.main-content {
   background-color: #fffffe;
+}
+
+.icon-search {
+  position: absolute;
+  right: 36%;
+}
+
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  padding: 1.5rem;
+  user-select: none;
+}
+
+.image-result {
+  display: flex;
+  flex-direction: column;
+  width: 22vw;
+  height: 15rem;
+  -webkit-box-shadow: 1px 4px 8px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 4px 8px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 4px 8px -1px rgba(0, 0, 0, 0.75);
+}
+.image-result__preview {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.image-result__stats {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  height: 30%;
+  list-style: none;
+}
+.image-result__stats__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.45em;
+  width: 25%;
+  text-align: center;
+  font-size: 0.8em;
+}
+.image-result__stats--title {
+  font-weight: 700;
+}
+
+.icon-search {
+  cursor: pointer;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.icon-search:hover {
+  transform: scale(1.2);
+}
+
+.pages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem;
+  font-size: 2rem;
+}
+.pages__item {
+  width: 2.2rem;
+  text-align: center;
+  transition: transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
+  user-select: none;
+}
+.pages__item:hover {
+  transform: scale(1.7);
+  color: #3da9fc;
 }/*# sourceMappingURL=index.css.map */

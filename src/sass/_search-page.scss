@@ -2,10 +2,11 @@
 //------SEARCH------//
 //-------PAGE-------//
 //------------------//
-.search-wrapper {
+.search-header {
   display: flex;
-}
-.search-bar {
+  align-items: center;
+  justify-content: center;
+
   width: 100vw;
   height: 10vh;
 
@@ -13,6 +14,21 @@
   border-bottom-right-radius: 20px;
   background-color: $secondary;
 }
-.search-content {
+.search-bar {
+  position: relative;
+
+  width: 30%;
+  height: 60%;
+
+  text-align: center;
+  font-size: 1.5em;
+}
+.main-content {
   background-color: $background;
+}
+
+.icon-search {
+  position: absolute;
+
+  right: 36%;
 }
