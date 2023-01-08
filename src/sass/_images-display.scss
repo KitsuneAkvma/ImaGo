@@ -11,8 +11,8 @@
 .image-result {
   display: flex;
   flex-direction: column;
-  width: 22vw;
-  height: 15rem;
+  width: 20rem;
+  height: 25rem;
 
   -webkit-box-shadow: 1px 4px 8px -1px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 1px 4px 8px -1px rgba(0, 0, 0, 0.75);
@@ -23,6 +23,7 @@
     height: 100%;
 
     cursor: pointer;
+    object-fit: fill;
   }
 
   &__stats {
@@ -38,13 +39,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 0.45em;
+    gap: 0.4em;
     width: 25%;
 
     text-align: center;
     font-size: 0.8em;
+    color: $text;
   }
   &__stats--title {
     font-weight: 700;
+    color: $header;
   }
 }
