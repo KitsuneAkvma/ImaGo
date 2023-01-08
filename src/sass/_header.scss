@@ -1,6 +1,5 @@
 //------------------//
-//------SEARCH------//
-//-------PAGE-------//
+//------HEADER------//
 //------------------//
 .search-header {
   display: flex;
@@ -22,6 +21,7 @@
 
   text-align: center;
   font-size: 1.5em;
+  color: $header;
 }
 .main-content {
   background-color: $background;
@@ -31,4 +31,15 @@
   position: absolute;
 
   right: 36%;
+}
+
+.logo {
+  position: absolute;
+  left: 3vw;
+
+  color: $background;
+  font-family: $font-logo;
+  font-size: 4em;
+  font-style: italic;
+  letter-spacing: 0.2em;
 }

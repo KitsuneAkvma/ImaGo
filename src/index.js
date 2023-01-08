@@ -98,7 +98,7 @@ function displayResults(image) {
         <p class="image-result__stats--data">${image.downloads}</p>
       </li>
     </ul>`;
-    // Adding results to DOM
+  // Adding results to DOM
   let resultElement = document.createElement('article');
   resultElement.innerHTML = resultNode;
   resultElement.classList.add('image-result');
