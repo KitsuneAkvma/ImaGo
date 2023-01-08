@@ -2,7 +2,6 @@ import Notiflix, { Notify } from 'notiflix';
 import axios from 'axios';
 import SimpleLightbox from 'simplelightbox';
 
-
 // API stuff
 const API_KEY = '32683324-b0ce690598d4af74b245f496c';
 const API_URL = 'https://pixabay.com/api/?key=';
@@ -12,24 +11,22 @@ const searchBar = document.querySelector(`
 [name="search-bar-header"]`);
 const imagesDisplay = document.querySelector('.main-content');
 const searchIcon = document.querySelector('.icon-search');
-const pageContainer = document.querySelector('.pages');
-/////////////////////////////////
+const loadMoreBtn = document.querySelector('.footer__load-more');
 
-async function fetchMain(page) {
+// Global Variables
+let currentPage = 1;
+let pagesLeft = 0;
+////////////////////////////
+
+async function fetchMain() {
   const searchedKey = searchBar.value;
   imagesDisplay.innerHTML = ' ';
-  pageContainer.innerHTML = ' ';
   ////////////////////////////
   await axios
     .get(
-      API_URL +
-        API_KEY +
-        `&q=${searchedKey}` +
-        `&per_page=${20}` +
-        `&page=${page}`
+      `${API_URL}${API_KEY}&q=${searchedKey}&per_page=40&page=${currentPage}`
     )
     .then(response => {
-      const numberOfPages = response.data.totalHits / 20;
       const hits = response.data.hits;
       console.log(`Response: `);
       console.log(response);
@@ -38,14 +35,16 @@ async function fetchMain(page) {
         /////////////////////////////////
         if (response.data.totalHits == 0) {
           Notiflix.Notify.failure(
-            'Sorry, we did not find any images. Please try other keywords'
+            'Sorry, there are no images matching your search query. Please try again.'
           );
           return;
         }
         /////////////////////////////////
-        Notiflix.Notify.success(
-          `Horray! We found ${response.data.totalHits} images!`
-        );
+        if (currentPage == 1) {
+          Notiflix.Notify.success(
+            `Horray! We found ${response.data.totalHits} images!`
+          );
+        }
         /////////////////////////////////
         console.log(`Hits found: `);
         console.log(hits);
@@ -54,22 +53,16 @@ async function fetchMain(page) {
         }
         /////////////////////////////////
         const lightbox = new SimpleLightbox('.main-content>.image-result img');
-        console.log(lightbox);
-        const images = document.querySelector('.image-result__preview');
-        for (let img in images) {
-          img.addEventListener('click', lightbox.open);
-        }
         /////////////////////////////////
-        for (let i = 1; i <= numberOfPages; i++) {
-          const pageNode = document.createElement('div');
-          pageNode.classList.add('pages__item');
-          pageNode.innerHTML = i;
-          pageContainer.appendChild(pageNode);
-        }
-        /////////////////////////////////
-        const pageButtons = document.querySelectorAll('.pages__item');
-        for (btn of pageButtons) {
-          btn.addEventListener('click', fetchMain);
+        pagesLeft = response.data.totalHits - 40 * currentPage;
+        console.log(pagesLeft);
+        if (pagesLeft <= 0) {
+          loadMoreBtn.style.display = 'none';
+          Notiflix.Notify.info(
+            "We're sorry, but you've reached the end of search results."
+          );
+        } else {
+          loadMoreBtn.style.display = 'block';
         }
       }
     });
@@ -106,7 +99,16 @@ function displayResults(image) {
   imagesDisplay.appendChild(resultElement);
 }
 /////////////////////////////////
-searchIcon.addEventListener('click', fetchMain);
+function loadMore() {
+  currentPage++;
+  fetchMain();
+}
+function newSearch() {
+  currentPage = 1;
+  fetchMain();
+}
+/////////////////////////////////
+searchIcon.addEventListener('click', newSearch);
+loadMoreBtn.addEventListener('click', loadMore);
 
-// for (let i = 0; i < 100; i++) displayResults();
-// Notiflix.Notify.info('Hooray! We was able to find 100 images !');
+loadMoreBtn.style.display = 'none';

@@ -1,3 +1,14 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  width: 100vw; 
+  &__load-more {
+    width: 10rem;
+    height: 3rem;
+
+    text-align: center;
+  }
+}
 .pages {
   display: flex;
   flex-wrap: wrap;
