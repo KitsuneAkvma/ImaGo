@@ -311,6 +311,10 @@ input[type=checkbox], input[type=radio] {
   height: 100%;
   cursor: pointer;
   object-fit: fill;
+  transition: transfrom 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.image-result__preview:hover {
+  transform: scale(1.01);
 }
 .image-result__stats {
   display: flex;

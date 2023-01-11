@@ -33,42 +33,39 @@ async function fetchMain() {
       // Save array of images objecs as variable
       const hits = response.data.hits;
 
-      // If promise is fuffiled
-      if (response.statusText == 'OK') {
-        // If promise is fuffiled but notthing has been found
-        if (response.data.totalHits == 0) {
-          loadMoreBtn.style.display = 'none';
-          Notiflix.Notify.failure(
-            'Sorry, there are no images matching your search query. Please try again.'
-          );
-          return;
-        }
-        // Otherwise, show succes notify (only if user is on first page)
-        if (currentPage == 1) {
-          Notiflix.Notify.success(
-            `Horray! We found ${response.data.totalHits} images!`
-          );
-        }
-        // Call Rendering function for every image object found
-        for (let hit of hits) {
-          displayResults(hit);
-        }
-        // Create SimpleLightbox Gallery
-        const lightbox = new SimpleLightbox('.main-content>.image-result img');
+      // If promise is fuffiled but notthing has been found
+      if (response.data.totalHits == 0) {
+        loadMoreBtn.style.display = 'none';
+        Notiflix.Notify.failure(
+          'Sorry, there are no images matching your search query. Please try again.'
+        );
+        return;
+      }
+      // Otherwise, show succes notify (only if user is on first page)
+      if (currentPage == 1) {
+        Notiflix.Notify.success(
+          `Horray! We found ${response.data.totalHits} images!`
+        );
+      }
+      // Call Rendering function for every image object found
+      for (let hit of hits) {
+        displayResults(hit);
+      }
+      // Create SimpleLightbox Gallery
+      const lightbox = new SimpleLightbox('.main-content>.image-result img');
 
-        // Create Pagination Logic
-        imagesLeft = response.data.totalHits - 40 * currentPage;
-        console.log(`Images left: ${imagesLeft}`);
-        // If There is no images left - hide "Load More..." button and show notify
-        if (imagesLeft <= 0) {
-          loadMoreBtn.style.display = 'none';
-          Notiflix.Notify.info(
-            "We're sorry, but you've reached the end of search results."
-          );
-        } else {
-          // Otherwise show "Load More..." button
-          loadMoreBtn.style.display = 'block';
-        }
+      // Create Pagination Logic
+      imagesLeft = response.data.totalHits - 40 * currentPage;
+      console.log(`Images left: ${imagesLeft}`);
+      // If There is no images left - hide "Load More..." button and show notify
+      if (imagesLeft <= 0) {
+        loadMoreBtn.style.display = 'none';
+        Notiflix.Notify.info(
+          "We're sorry, but you've reached the end of search results."
+        );
+      } else {
+        // Otherwise show "Load More..." button
+        loadMoreBtn.style.display = 'block';
       }
     });
 }
