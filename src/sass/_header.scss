@@ -2,6 +2,8 @@
 //------HEADER------//
 //------------------//
 .search-header {
+  position: sticky;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,4 +53,75 @@
   letter-spacing: 0.2em;
 
   user-select: none;
+}
+.display-mode-switch {
+  position: absolute;
+  right: 3rem;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.display-mode-switch__label {
+  position: relative;
+
+  width: 60px;
+  height: 34px;
+
+  cursor: pointer;
+  & input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  & p {
+    display: block;
+  }
+}
+.slider {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: $header;
+  transition: 0.4s;
+  border: none;
+  border-radius: 34px;
+
+  cursor: pointer;
+
+  &:before {
+    position: absolute;
+    content: '';
+    left: 4px;
+    bottom: 4px;
+
+    height: 26px;
+    width: 26px;
+
+    background-color: $background;
+    border-radius: 50%;
+    transition: 0.4s;
+  }
+
+  .display-mode__input:checked + & {
+    background-color: $Tertiary;
+  }
+
+  .display-mode__input:focus + & {
+    box-shadow: 0 0 1px $Tertiary;
+  }
+
+  .display-mode__input:checked + &:before {
+    transform: translateX(26px);
+  }
+}
+.display-mode-switch__option {
+  font-size: 1em;
+  font-weight: 900;
+  color: $header;
 }

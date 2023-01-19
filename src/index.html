@@ -19,6 +19,7 @@
   <body>
     <header class="search-header">
       <h1 class="logo">ImaGo</h1>
+
       <input
         class="search-bar"
         type="text"
@@ -31,9 +32,30 @@
         src="./img/bx-search-alt-2.svg"
         alt="search-ico"
       />
+
+      <div class="display-mode-switch">
+        <div class="display-mode-switch__option">Load More</div>
+        <label class="display-mode-switch__label">
+          <input class="display-mode__input" type="checkbox" chcecked="false" />
+          <span class="slider"></span>
+        </label>
+        <div class="display-mode-switch__option">Infinte Scroll</div>
+      </div>
     </header>
     <section class="main-content"></section>
+    <!-- <div id="loader">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div> -->
     <footer class="footer">
+      <div class="card-actions">
+        <span
+          >Showing <span id="card-count">0</span> of
+          <span id="card-total">0</span> cards
+        </span>
+      </div>
       <button class="footer__load-more">Load More . . .</button>
     </footer>
     <script src="index.js" type="module"></script>
