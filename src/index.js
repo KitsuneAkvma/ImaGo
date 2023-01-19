@@ -23,7 +23,7 @@ async function fetchMain() {
   // Get input's value
   const searchedKey = searchBar.value;
   // Clear website
-  imagesDisplay.innerHTML = ' ';
+
   // Search for images by keyword. Show 40 images per page and show specified page ( logic done bellow)
   await axios
     .get(
@@ -111,6 +111,7 @@ function loadMore() {
   fetchMain();
 }
 function newSearch() {
+  imagesDisplay.innerHTML = ' ';
   // Reset current page counter AND THEN call fetch function
   currentPage = 1;
   fetchMain();
