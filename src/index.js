@@ -1,6 +1,7 @@
 import Notiflix, { Notify } from 'notiflix';
 import axios from 'axios';
 import SimpleLightbox from 'simplelightbox';
+import { throttle } from 'throttle-debounce';
 
 // API stuff
 const API_KEY = '32683324-b0ce690598d4af74b245f496c';
@@ -12,11 +13,15 @@ const searchBar = document.querySelector(`
 const imagesDisplay = document.querySelector('.main-content');
 const searchIcon = document.querySelector('.icon-search');
 const loadMoreBtn = document.querySelector('.footer__load-more');
+const modeSwitch = document.querySelector('.display-mode__input');
 
+const cardActions = document.querySelector('.card-actions');
+const cardCount = document.querySelector('#card-count');
+const cardTotal = document.querySelector('#card-total');
 // Global Variables
 let currentPage = 1;
 let imagesLeft = 0;
-
+let totalCards = 0;
 ////////////////////////////
 
 async function fetchMain() {
@@ -57,6 +62,9 @@ async function fetchMain() {
       // Create Pagination Logic
       imagesLeft = response.data.totalHits - 40 * currentPage;
       console.log(`Images left: ${imagesLeft}`);
+      totalCards = response.data.totalHits;
+      cardTotal.innerHTML = totalCards;
+      cardCount.innerHTML = 40 * currentPage;
       // If There is no images left - hide "Load More..." button and show notify
       if (imagesLeft <= 0) {
         loadMoreBtn.style.display = 'none';
@@ -109,17 +117,49 @@ function loadMore() {
   // Increment current page counter AND THEN call fetch function
   currentPage++;
   fetchMain();
+
+  modeSelection();
 }
 function newSearch() {
   imagesDisplay.innerHTML = ' ';
   // Reset current page counter AND THEN call fetch function
   currentPage = 1;
   fetchMain();
+
+  modeSelection();
+}
+function modeSelection() {
+  if (modeSwitch.checked == true) {
+    loadMoreBtn.style.display = 'none';
+
+    // window.addEventListener('scroll', throttle(infinityScroll, 500));
+    Notiflix.Notify.info('Infinite scroll is ON', { timeout: 0 });
+
+    infinityScroll();
+  } else {
+    loadMoreBtn.style.display = 'block';
+
+    // window.removeEventListener('scroll', infinityScroll);
+    Notiflix.Notify.info('Infinite scroll is OFF', { timeout: 0 });
+  }
+}
+function infinityScroll() {
+  const endOfPage =
+    window.innerHeight + window.pageYOffset >= document.body.offsetHeight;
+
+  if (endOfPage) {
+    const loadMoreThrottled = throttle(1000, () => {
+      loadMore;
+    });
+    loadMoreThrottled;
+  }
 }
 
 // Event Listeners (done indirectly because of need to modify some values before callbacks)
 searchIcon.addEventListener('click', newSearch);
+searchBar.addEventListener('change', newSearch);
 loadMoreBtn.addEventListener('click', loadMore);
+modeSwitch.addEventListener('change', modeSelection);
 
 // Hide "Load More..." button on default
 loadMoreBtn.style.display = 'none';
