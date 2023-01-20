@@ -18,6 +18,8 @@ const modeSwitch = document.querySelector('.display-mode__input');
 const cardActions = document.querySelector('.card-actions');
 const cardCount = document.querySelector('#card-count');
 const cardTotal = document.querySelector('#card-total');
+
+const scrollTop = document.querySelector('.scroll-top');
 // Global Variables
 let currentPage = 1;
 let imagesLeft = 0;
@@ -160,6 +162,9 @@ searchIcon.addEventListener('click', newSearch);
 searchBar.addEventListener('change', newSearch);
 loadMoreBtn.addEventListener('click', loadMore);
 modeSwitch.addEventListener('change', modeSelection);
+scrollTop.addEventListener('click', () => {
+  window.scrollTo(0, 0);
+});
 
 // Hide "Load More..." button on default
 loadMoreBtn.style.display = 'none';

@@ -401,6 +401,24 @@ input[type=checkbox], input[type=radio] {
   color: #094067;
 }
 
+.scroll-top {
+  position: fixed;
+  right: 4rem;
+  bottom: 4rem;
+  width: 4rem;
+  height: 4rem;
+  background-color: #ef4565;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 4em;
+  color: #fffffe;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.scroll-top:hover {
+  transform: scale(1.4);
+}
+
 .footer {
   display: flex;
   flex-direction: column;
