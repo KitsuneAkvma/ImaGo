@@ -150,8 +150,12 @@ function modeSelection() {
 function checkMode() {
   if (infinityScrollIsON) {
     loadMoreBtn.style.display = 'none';
+    document.querySelector('.load-more').style.color = '#094067';
+    document.querySelector('.infinite-scroll').style.color = '#ef4565';
   } else {
     if (totalCards !== 0) loadMoreBtn.style.display = 'block';
+    document.querySelector('.load-more').style.color = '#ef4565';
+    document.querySelector('.infinite-scroll').style.color = '#094067';
   }
 }
 function infinityScroll() {

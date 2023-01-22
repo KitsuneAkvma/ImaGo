@@ -56,7 +56,7 @@
 }
 .display-mode-switch {
   position: absolute;
-  right: 3rem;
+  right: 4%;
 
   display: flex;
   align-items: center;
@@ -65,7 +65,7 @@
 .display-mode-switch__label {
   position: relative;
 
-  width: 60px;
+  width: 100px;
   height: 34px;
 
   cursor: pointer;
@@ -117,11 +117,49 @@
   }
 
   .display-mode__input:checked + &:before {
-    transform: translateX(26px);
+    transform: translateX(65px);
   }
 }
 .display-mode-switch__option {
-  font-size: 1em;
+  font-size: 1.5em;
   font-weight: 900;
   color: $header;
+}
+
+@media only screen and (max-width: 1200px) {
+  .logo {
+    font-size: 2em;
+  }
+  .search-bar {
+    width: 50%;
+  }
+  .icon-search {
+    position: absolute;
+
+    right: 26%;
+  }
+  .display-mode-switch__option {
+    display: none;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .logo {
+    font-size: 1em;
+  }
+  .search-bar {
+    width: 50%;
+
+    font-size: 1em;
+  }
+  .icon-search {
+    position: absolute;
+
+    right: 26%;
+  }
+  .display-mode-switch {
+    right: 1rem;
+  }
+  .display-mode-switch__option {
+    display: none;
+  }
 }
