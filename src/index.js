@@ -1,7 +1,7 @@
 import Notiflix, { Notify } from 'notiflix';
 import axios from 'axios';
 import SimpleLightbox from 'simplelightbox';
-import { throttle } from 'throttle-debounce';
+import * as lodash from 'lodash';
 
 // API stuff
 const API_KEY = '32683324-b0ce690598d4af74b245f496c';
@@ -24,6 +24,8 @@ const scrollTop = document.querySelector('.scroll-top');
 let currentPage = 1;
 let imagesLeft = 0;
 let totalCards = 0;
+
+let infinityScrollIsON = false;
 ////////////////////////////
 
 async function fetchMain() {
@@ -44,14 +46,16 @@ async function fetchMain() {
       if (response.data.totalHits == 0) {
         loadMoreBtn.style.display = 'none';
         Notiflix.Notify.failure(
-          'Sorry, there are no images matching your search query. Please try again.'
+          'Sorry, there are no images matching your search query. Please try again.',
+          { position: 'left-bottom' }
         );
         return;
       }
       // Otherwise, show succes notify (only if user is on first page)
       if (currentPage == 1) {
         Notiflix.Notify.success(
-          `Horray! We found ${response.data.totalHits} images!`
+          `Horray! We found ${response.data.totalHits} images!`,
+          { position: 'left-bottom' }
         );
       }
       // Call Rendering function for every image object found
@@ -63,7 +67,7 @@ async function fetchMain() {
 
       // Create Pagination Logic
       imagesLeft = response.data.totalHits - 40 * currentPage;
-      console.log(`Images left: ${imagesLeft}`);
+
       totalCards = response.data.totalHits;
       cardTotal.innerHTML = totalCards;
       cardCount.innerHTML = 40 * currentPage;
@@ -71,11 +75,12 @@ async function fetchMain() {
       if (imagesLeft <= 0) {
         loadMoreBtn.style.display = 'none';
         Notiflix.Notify.info(
-          "We're sorry, but you've reached the end of search results."
+          "We're sorry, but you've reached the end of search results.",
+          { position: 'left-bottom' }
         );
       } else {
         // Otherwise show "Load More..." button
-        loadMoreBtn.style.display = 'block';
+        if (!infinityScrollIsON) loadMoreBtn.style.display = 'block';
       }
     });
 }
@@ -119,41 +124,42 @@ function loadMore() {
   // Increment current page counter AND THEN call fetch function
   currentPage++;
   fetchMain();
-
-  modeSelection();
+  checkMode();
 }
 function newSearch() {
   imagesDisplay.innerHTML = ' ';
   // Reset current page counter AND THEN call fetch function
   currentPage = 1;
   fetchMain();
-
-  modeSelection();
+  checkMode();
 }
 function modeSelection() {
-  if (modeSwitch.checked == true) {
-    loadMoreBtn.style.display = 'none';
+  if (modeSwitch.checked === true) {
+    infinityScrollIsON = true;
 
-    // window.addEventListener('scroll', throttle(infinityScroll, 500));
-    Notiflix.Notify.info('Infinite scroll is ON', { timeout: 0 });
-
-    infinityScroll();
+    window.addEventListener('scroll', infinityScroll);
+    Notiflix.Notify.info('Infinite scroll is ON', { position: 'left-bottom' });
   } else {
-    loadMoreBtn.style.display = 'block';
+    infinityScrollIsON = false;
 
-    // window.removeEventListener('scroll', infinityScroll);
-    Notiflix.Notify.info('Infinite scroll is OFF', { timeout: 0 });
+    window.removeEventListener('scroll', infinityScroll);
+    Notiflix.Notify.info('Infinite scroll is OFF', { position: 'left-bottom' });
+  }
+  checkMode();
+}
+function checkMode() {
+  if (infinityScrollIsON) {
+    loadMoreBtn.style.display = 'none';
+  } else {
+    if (totalCards !== 0) loadMoreBtn.style.display = 'block';
   }
 }
 function infinityScroll() {
-  const endOfPage =
-    window.innerHeight + window.pageYOffset >= document.body.offsetHeight;
+  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
-  if (endOfPage) {
-    const loadMoreThrottled = throttle(1000, () => {
-      loadMore;
-    });
-    loadMoreThrottled;
+  if (totalCards == 0) return;
+  if (scrollTop + clientHeight >= scrollHeight - 5) {
+    loadMore();
   }
 }
 
@@ -166,5 +172,9 @@ scrollTop.addEventListener('click', () => {
   window.scrollTo(0, 0);
 });
 
+//-------DEFAULTS-------//
+
 // Hide "Load More..." button on default
 loadMoreBtn.style.display = 'none';
+modeSwitch.checked = false;
+modeSelection();
