@@ -1,26 +1,24 @@
 {
-  "name": "goit-js-hw-11",
+  "name": "ImaGo",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://KitsuneAkvma.github.io/goit-js-hw-11",
+  "homepage": "https://KitsuneAkvma.github.io/ImaGo",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /goit-js-hw-11/"
+    "build": "parcel build src/*.html --public-url /ImaGo/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KitsuneAkvma/goit-js-hw-11.git"
+    "url": "git+https://github.com/KitsuneAkvma/ImaGo.git"
   },
   "keywords": [],
   "author": "Mateusz Martin <mateusz.martinn@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/KitsuneAkvma/goit-js-hw-11/issues"
+    "url": "https://github.com/KitsuneAkvma/ImaGo/issues"
   },
   "dependencies": {
     "axios": "^1.2.2",
-    "lodash": "^4.17.21",
-    "lodash.debounce": "^4.0.8",
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.5",
     "simplelightbox": "^2.11.0"
@@ -29,6 +27,8 @@
     "@parcel/transformer-sass": "^2.6.0",
     "buffer": "^6.0.3",
     "cssnano": "^4.1.11",
+    "eslint": "^8.43.0",
+    "eslint-config-google": "^0.14.0",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4"
