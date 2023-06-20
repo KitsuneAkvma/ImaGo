@@ -4,7 +4,10 @@
 
 ImaGo is a simple web application that allows you to search for images using the Pixabay API. It is built using HTML, SASS, JavaScript, and various libraries and tools including ESLint, Simplelightbox, Axios, Notiflix, and Parcel.
 
-**Demo:** [Image Search Engine Demo](https://kitsuneakvma.github.io/ImaGo/)
+It's older and more primitive project  than [Image-Finder](https://github.com/KitsuneAkvma/Image-Finder) but I like it bit more and plan to rework it sometime to react and maybe add some backend or at least local storage.
+
+
+**Demo:** [ImaGo Demo](https://kitsuneakvma.github.io/ImaGo/)
 
 ## Features
 
