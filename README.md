@@ -2,7 +2,7 @@
 
 <img alt="pircture icon" src="public/favicon.svg" width="100">
 
-The Image Search Engine is a simple web application that allows you to search for images using the Pixabay API. It is built using HTML, SASS, JavaScript, and various libraries and tools including ESLint, Simplelightbox, Axios, Notiflix, and Parcel.
+ImaGo is a simple web application that allows you to search for images using the Pixabay API. It is built using HTML, SASS, JavaScript, and various libraries and tools including ESLint, Simplelightbox, Axios, Notiflix, and Parcel.
 
 **Demo:** [Image Search Engine Demo](https://kitsuneakvma.github.io/ImaGo/)
 
